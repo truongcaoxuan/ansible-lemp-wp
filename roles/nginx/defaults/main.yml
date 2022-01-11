@@ -1,0 +1,5 @@
+---
+#HTTP Settings
+http_port: "80" # HTTP port, default is 80.
+http_host: "mydomain" # your domain name. "{{ ansible_facts.eth0.ipv4.address }}"
+http_conf: "your_domain.conf" # the name of the configuration file that will be created within nginx.
