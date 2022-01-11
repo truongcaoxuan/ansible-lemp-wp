@@ -5,4 +5,5 @@
   - ufw
   - php
   - nginx
+  - mysql
   - wordpress
