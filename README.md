@@ -19,20 +19,19 @@ git clone https://github.com/do-community/ansible-lemp-wp.git
 cd ansible-lemp-wp
 ```
 ### 2. Customize Options
-roles/[roles_name]/defaults/main.yml
+```
 ---
-#System Settings
-
 #MySQL Settings
-mysql_root_password: "mysql_root_password"
-mysql_db: "wordpress"
-mysql_user: "sammy"
-mysql_password: "password"
+ mysql_root_password: "mysql_root_password"
+ mysql_db: "wordpress"
+ mysql_user: "sammy"
+ mysql_password: "password"
 
 #HTTP Settings
-http_host: "your_domain"
-http_conf: "your_domain.conf"
-http_port: "80"
+ http_host: "your_domain"
+ http_conf: "your_domain.conf"
+ http_port: "80"
+```
 ### 3. Run the Playbook
 ```
 ansible-playbook -l [target] -i [inventory file] -u [remote user] playbook.yml
