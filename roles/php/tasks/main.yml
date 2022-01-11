@@ -1,6 +1,6 @@
 ---
 # tasks file for php
-  tasks:
+
     - name: Update cache and Install LEMP Packages
       apt: 
         name: "{{ item }}"
