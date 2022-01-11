@@ -1,0 +1,39 @@
+---
+  tasks:
+  # Nginx Install
+    - name: Update cache and Install LEMP Packages
+      apt: 
+        name: nginx
+        state: latest
+        update_cache: yes
+ 
+  # Nginx Configuration
+    - name: Set up Nginx conf file
+      template: 
+        src: "files/nginx.conf.j2"
+        dest: "/etc/nginx/sites-available/{{ http_conf }}"
+      tags: [ nginx ]
+
+    - name: Enable new site
+      file:
+        src: "/etc/nginx/sites-available/{{ http_conf }}"
+        dest: "/etc/nginx/sites-enabled/{{ http_conf }}"
+        state: link
+      notify: Reload Nginx
+      tags: [ nginx ]
+
+    - name: Removes default site
+      file:
+        path: "/etc/nginx/sites-enabled/default"
+        state: absent
+      notify: Reload Nginx
+      tags: [ nginx ]
+      
+    - name: Create document root
+      file:
+        path: "/var/www/{{ http_host }}"
+        state: directory
+        owner: "www-data"
+        group: "www-data"
+        mode: '0755'
+      tags: [ nginx ]
