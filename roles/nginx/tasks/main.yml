@@ -1,5 +1,5 @@
 ---
-  tasks:
+
   # Nginx Install
     - name: Update cache and Install LEMP Packages
       apt: 
